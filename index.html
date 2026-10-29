@@ -1,0 +1,132 @@
+<!doctype html>
+<html lang="zh-CN">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>象限人格测评</title>
+    <link
+      rel="icon"
+      href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Crect width='64' height='64' rx='8' fill='%23121416'/%3E%3Ccircle cx='32' cy='32' r='20' fill='none' stroke='%23e7c46a' stroke-width='5'/%3E%3Cpath d='M32 10v44M10 32h44' stroke='%2352a36f' stroke-width='4'/%3E%3C/svg%3E"
+    />
+    <meta
+      name="description"
+      content="一个融合现代人格心理学、易经意象与五行象征的自我探索测试。"
+    />
+    <link rel="stylesheet" href="./styles.css" />
+  </head>
+  <body>
+    <main class="app-shell">
+      <section class="hero" aria-labelledby="site-title">
+        <img class="hero__image" src="./assets/mandala.png" alt="" />
+        <div class="hero__shade"></div>
+        <div class="hero__content">
+          <p class="eyebrow">人格探索 · 五行倾向 · 易经意象</p>
+          <h1 id="site-title">象限人格测评</h1>
+          <p class="hero__copy">
+            用 25 个日常选择，生成一份融合现代人格维度与东方象征系统的个人画像。
+          </p>
+          <div class="hero__actions">
+            <button class="primary-btn" id="startBtn" type="button">
+              <span aria-hidden="true">▶</span>
+              开始测试
+            </button>
+            <button class="ghost-btn" id="scrollInfoBtn" type="button">
+              <span aria-hidden="true">⌄</span>
+              查看说明
+            </button>
+          </div>
+        </div>
+      </section>
+
+      <section class="intro-band" id="intro">
+        <div class="intro-grid">
+          <div>
+            <p class="section-kicker">测评说明</p>
+            <h2>这不是诊断，而是一面可讨论的镜子</h2>
+          </div>
+          <p>
+            结果会把你的回答转译为开放性、秩序感、行动能量、共情度、内省度五个现代维度，
+            同时生成木、火、土、金、水的倾向比例与一个卦象式人格意象。所有计算都在本地浏览器完成。
+          </p>
+        </div>
+      </section>
+
+      <section class="quiz-panel" id="quiz" aria-live="polite">
+        <div class="quiz-top">
+          <div>
+            <p class="section-kicker" id="quizKicker">准备开始</p>
+            <h2 id="questionTitle">选择最像你的回答</h2>
+          </div>
+          <div class="progress-wrap" aria-label="答题进度">
+            <span id="progressText">0 / 25</span>
+            <div class="progress-track">
+              <div class="progress-fill" id="progressFill"></div>
+            </div>
+          </div>
+        </div>
+
+        <div class="question-surface" id="questionSurface">
+          <p class="question-text" id="questionText">
+            点击“开始测试”后，题目会出现在这里。
+          </p>
+          <div class="scale" id="scale" role="radiogroup" aria-label="选择符合程度"></div>
+        </div>
+
+        <div class="quiz-controls">
+          <button class="icon-btn" id="prevBtn" type="button" aria-label="上一题" title="上一题">
+            ‹
+          </button>
+          <button class="secondary-btn" id="nextBtn" type="button" disabled>
+            下一题
+          </button>
+        </div>
+      </section>
+
+      <section class="result" id="result" hidden>
+        <div class="result-header">
+          <div>
+            <p class="section-kicker">你的综合画像</p>
+            <h2 id="resultTitle">结果生成中</h2>
+          </div>
+          <div class="result-actions">
+            <button class="ghost-btn compact" id="copyBtn" type="button">
+              <span aria-hidden="true">⧉</span>
+              复制摘要
+            </button>
+            <button class="ghost-btn compact" id="restartBtn" type="button">
+              <span aria-hidden="true">↺</span>
+              重新测试
+            </button>
+          </div>
+        </div>
+
+        <div class="result-layout">
+          <article class="result-main">
+            <div class="archetype-mark" id="archetypeMark">☰</div>
+            <p class="result-subtitle" id="resultSubtitle"></p>
+            <p id="resultBody"></p>
+            <div class="result-tags" id="resultTags"></div>
+          </article>
+
+          <aside class="result-side">
+            <h3>五行比例</h3>
+            <div class="bar-list" id="elementBars"></div>
+          </aside>
+        </div>
+
+        <div class="analysis-grid">
+          <article>
+            <h3>现代人格维度</h3>
+            <div class="bar-list" id="traitBars"></div>
+          </article>
+          <article>
+            <h3>行动建议</h3>
+            <ul class="advice-list" id="adviceList"></ul>
+          </article>
+        </div>
+      </section>
+    </main>
+
+    <script src="./script.js"></script>
+  </body>
+</html>
